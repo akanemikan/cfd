@@ -39,8 +39,11 @@ int ReadSize(ifstream &ifs)
 }
 
 void CheckType(vector<string> &v, string m){ v.push_back(m); }
+
 void CheckType(vector<int> &v, string m){ v.push_back(stoi(m)); }
+
 void CheckType(vector<double> &v, string m){ v.push_back(stod(m)); }
+
 void CheckType(int &v, string m){ v = stoi(m); }
 
 template<class T>

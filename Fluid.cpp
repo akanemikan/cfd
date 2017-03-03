@@ -4,7 +4,5 @@
 int main() {
     Mesh mesh(0);
 
-    showMatrix(mesh.boundaryFaces);
-    
     return 0;
 }

@@ -19,10 +19,16 @@ public:
     iMatrix boundaryFaces;
     iSource internalFaces;
 
-    void typeSelect(Boundary &boundary, const sSource &v);
-    void ReadBoundary();
+    Matrix faceCenters;
+    Matrix faceAreas;
 
-    void makeIBFaces();
+    void typeSelect(Boundary &boundary, const sSource &v);
+    void ReadBoundaryFile();
+
+    void makeInterBoundFaces();
+
+    void calcFaceCenter();
+    void calcFaceAreas();
 };
 
 #endif

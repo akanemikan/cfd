@@ -16,12 +16,29 @@ typedef vector<string> sSource;
 
 #define forEach(v, i) for(int i=0; i<v.size(); i++)
 
+double magS(Source &v);
+
+Source& operator+=(Source &self, Source &other);
+
+Source& operator/=(Source &self, double);
+
+Source operator+(Source &a, Source &b);
+
+Source operator-(Source &a, Source &b);
+
+Source operator*(Source &a, double b);
+
+Source operator/(Source &a, double b);
+
+Source operator^(Source &a, Source &b);
+
 template<class T>
 void showMatrix(const T &v){
     forEach(v,i){
         forEach(v[i],j){
-            cout << v[i][j] << endl;
+            cout << v[i][j] << "\t";
         }
+        cout << endl;
     }
 }
 
