@@ -1,6 +1,5 @@
 #include "FileIO.h"
 
-
 ifstream setFile(string filename)
 {
     ifstream ifs(filename);
@@ -57,8 +56,6 @@ int readSize(ifstream &ifs)
     }
     return point_size;
 }
-
-
 
 vector<string> readWord(ifstream &ifs, string targetWord)
 {

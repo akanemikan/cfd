@@ -23,7 +23,8 @@ public:
     matrix cellCenters;
     matrix faceAreas;
     source cellVolumes;
-
+    
+    source calcS();
     int nCells;
 
     void typeSelect(Boundary &boundary, const ssource &v);

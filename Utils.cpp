@@ -68,3 +68,12 @@ double magS(source &v){
         s += v[i]*v[i];
     return sqrt(s);
 }
+
+double calcDistance(source &p1, source &p2){
+    double d = 0.0;
+    for(int i=0; i<3; i++){
+        double delta = p1[i] - p2[i];
+        d += delta*delta;
+    }
+    return sqrt(d);
+}

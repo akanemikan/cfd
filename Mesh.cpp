@@ -89,6 +89,7 @@ void Mesh::calcFaceAreas()
             faceAreas[f] += (points[faces[f][next+1]] - points[faces[f][p+1]]) ^
                 (faceCenter - points[faces[f][p+1]]);
         }
+        faceAreas[f] /= 2;
     }
 
 }
@@ -145,4 +146,12 @@ void Mesh::calcCellCentersVolumes()
 
     forEach(cellCenters, celli)
         cellCenters[celli] /= cellVolumes[celli];
+}
+
+source Mesh::calcS() 
+{
+    source s(faces.size());
+    forEach(faceAreas, facei)
+        s[facei] = magS(faceAreas[facei]);
+    return s;
 }

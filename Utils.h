@@ -17,6 +17,7 @@ typedef vector<string> ssource;
 #define forEach(v, i) for(int i=0; i<(int)v.size(); i++)
 
 double magS(source &v);
+double calcDistance(source &p1, source &p2);
 
 source& operator+=(source &self, const source &other);
 
