@@ -10,6 +10,7 @@ void readElement(ifstream &ifs, matrix &x, int size, string filename);
 void readElement(ifstream &ifs, imatrix &x, int size, string filename);
 void readElement(ifstream &ifs, isource &x, int size, string filename);
 
+
 int readSize(ifstream &ifs);
 int readBracket(ifstream &ifs);
 

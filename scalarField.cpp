@@ -7,9 +7,9 @@ scalarField::scalarField(Mesh &mesh) {
 
 void scalarField::readValFileAndSet()
 {
-    boundVals = matrix(mesh.boundarys.size());
-    forEach(mesh.boundarys, patchI)
-        boundVals[patchI] = source(mesh.boundarys[patchI].nFaces);
+    boundVals = matrix(mesh.bounds.size());
+    forEach(mesh.bounds, patchi)
+        boundVals[patchi] = source(mesh.bounds[patchi].nFaces);
 
     ifstream ifs = setFile("0/p");
     ssource v;
@@ -17,16 +17,16 @@ void scalarField::readValFileAndSet()
     readWord(ifs, "dimensions");
 
     v = readWord(ifs, "internalField");
-    vals = source(mesh.nCell, stod(v[2]));
+    vals = source(mesh.nCells, stod(v[2]));
 
     readWord(ifs);
     readBracket(ifs);
-    forEach(mesh.boundarys, patchI){
+    forEach(mesh.bounds, patchi){
         readWord(ifs); 
         readBracket(ifs); 
         v = readWord(ifs);
-        for(int facei=0; facei<mesh.boundarys[patchI].nFaces; facei++)
-            boundVals[patchI][facei] = stod(v[1]);
+        for(int facei=0; facei<mesh.bounds[patchi].nFaces; facei++)
+            boundVals[patchi][facei] = stod(v[1]);
         readBracket(ifs);
     }
 }

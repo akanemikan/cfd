@@ -14,7 +14,7 @@ public:
     isource owner;
     isource neighbour;
 
-    vector<Boundary> boundarys;
+    vector<Boundary> bounds;
      
     imatrix boundaryFaces;
     isource internalFaces;
@@ -24,7 +24,7 @@ public:
     matrix faceAreas;
     source cellVolumes;
 
-    int nCell;
+    int nCells;
 
     void typeSelect(Boundary &boundary, const ssource &v);
     void readBoundaryFile();

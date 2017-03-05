@@ -10,7 +10,7 @@ Mesh::Mesh(int size) {
 
     makeInterBoundFaces();
 
-    nCell = 10;
+    nCells = 10;
 
     calcFaceCenters();
 
@@ -46,16 +46,16 @@ void Mesh::readBoundaryFile()
         for(int i=0; i<4; i++){
             typeSelect(boundary, readWord(ifs));
         }
-        boundarys.push_back(boundary);
+        bounds.push_back(boundary);
         readBracket(ifs);
     }
 }
 
 void Mesh::makeInterBoundFaces()
 {
-    forEach(boundarys, i){
-        int startFace = boundarys[i].startFace;
-        int nFaces = boundarys[i].nFaces;
+    forEach(bounds, i){
+        int startFace = bounds[i].startFace;
+        int nFaces = bounds[i].nFaces;
         isource tmp(nFaces);
         for(int f=0; f<nFaces; f++){
             tmp[f] = startFace + f;
@@ -95,10 +95,10 @@ void Mesh::calcFaceAreas()
 
 void Mesh::calcCellCentersVolumes()
 {
-    cellCenters = matrix(nCell, source(3, 0.0));
-    cellVolumes = source(nCell);
+    cellCenters = matrix(nCells, source(3, 0.0));
+    cellVolumes = source(nCells);
     matrix cellCentersEst = matrix(10, source(3, 0.0));
-    isource numCellFaces(nCell);
+    isource numCellFaces(nCells);
 
     forEach(owner, facei)
     {

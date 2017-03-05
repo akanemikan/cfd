@@ -21,23 +21,6 @@ ofstream setFile()
     return ofs;
 }
 
-
-int readSize(ifstream &ifs)
-{
-    string str;
-    regex pointsize_re("^[0-9]+$");
-    int point_size;
-    while (getline(ifs, str))
-    { 
-        if(regex_match(str, pointsize_re))
-        {
-            sscanf(str.data(), "%d", &point_size);
-            return point_size;
-        }
-    }
-    return point_size;
-}
-
 void CheckType(ssource &v, string m){ v.push_back(m); }
 
 void CheckType(isource &v, string m){ v.push_back(stoi(m)); }
@@ -58,6 +41,24 @@ void Matches(string str, string str_re, T &v)
         CheckType(v, m.str());
     }
 }
+
+int readSize(ifstream &ifs)
+{
+    string str;
+    regex pointsize_re("^[0-9]+$");
+    int point_size;
+    while (getline(ifs, str))
+    { 
+        if(regex_match(str, pointsize_re))
+        {
+            sscanf(str.data(), "%d", &point_size);
+            return point_size;
+        }
+    }
+    return point_size;
+}
+
+
 
 vector<string> readWord(ifstream &ifs, string targetWord)
 {
@@ -103,20 +104,8 @@ int readBracket(ifstream &ifs)
     return -1;
 }
 
-void readElement(ifstream &ifs, matrix &x, int size, string filename)
-{
-    string str;
-    string str_re="[0-9.]+";
-    x = matrix(size);
-    for(int i=0; i<size; i++){
-        getline(ifs, str);
-        Matches(str, str_re, x[i]);  
-    }
-}
-
 void readElement(ifstream &ifs, imatrix &x, int size, string filename)
 {
-
     string str;
     string str_re="[0-9]+";
     x = imatrix(size);
@@ -124,7 +113,6 @@ void readElement(ifstream &ifs, imatrix &x, int size, string filename)
         getline(ifs, str);
         Matches(str, str_re, x[i]);  
     }
-
 }
 
 void readElement(ifstream &ifs, isource &x, int size, string filename)
@@ -138,5 +126,14 @@ void readElement(ifstream &ifs, isource &x, int size, string filename)
     }
 }
 
-
+void readElement(ifstream &ifs, matrix &x, int size, string filename)
+{
+    string str;
+    string str_re="[0-9.]+";
+    x = matrix(size);
+    for(int i=0; i<size; i++){
+        getline(ifs, str);
+        Matches(str, str_re, x[i]);  
+    }
+}
 
