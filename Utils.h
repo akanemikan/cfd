@@ -8,29 +8,33 @@
 #include <regex>
 using namespace std;
 
-typedef vector<vector<double>> Matrix;
-typedef vector<vector<int>> iMatrix;
-typedef vector<double> Source;
-typedef vector<int> iSource;
-typedef vector<string> sSource;
+typedef vector<vector<double>> matrix;
+typedef vector<vector<int>> imatrix;
+typedef vector<double> source;
+typedef vector<int> isource;
+typedef vector<string> ssource;
 
-#define forEach(v, i) for(int i=0; i<v.size(); i++)
+#define forEach(v, i) for(int i=0; i<(int)v.size(); i++)
 
-double magS(Source &v);
+double magS(source &v);
 
-Source& operator+=(Source &self, Source &other);
+source& operator+=(source &self, const source &other);
 
-Source& operator/=(Source &self, double);
+source& operator/=(source &self, double);
 
-Source operator+(Source &a, Source &b);
+source operator+(const source &a, const source &b);
 
-Source operator-(Source &a, Source &b);
+source operator-(const source &a, const source &b);
 
-Source operator*(Source &a, double b);
+source operator*(const source &a, double b);
 
-Source operator/(Source &a, double b);
+source operator*(double a, const source &b);
 
-Source operator^(Source &a, Source &b);
+source operator/(const source &a, double b);
+
+source operator^(const source &a, const source &b);
+
+double operator&(const source &a, const source &b);
 
 template<class T>
 void showMatrix(const T &v){

@@ -22,7 +22,7 @@ ofstream setFile()
 }
 
 
-int ReadSize(ifstream &ifs)
+int readSize(ifstream &ifs)
 {
     string str;
     regex pointsize_re("^[0-9]+$");
@@ -38,11 +38,11 @@ int ReadSize(ifstream &ifs)
     return point_size;
 }
 
-void CheckType(vector<string> &v, string m){ v.push_back(m); }
+void CheckType(ssource &v, string m){ v.push_back(m); }
 
-void CheckType(vector<int> &v, string m){ v.push_back(stoi(m)); }
+void CheckType(isource &v, string m){ v.push_back(stoi(m)); }
 
-void CheckType(vector<double> &v, string m){ v.push_back(stod(m)); }
+void CheckType(source &v, string m){ v.push_back(stod(m)); }
 
 void CheckType(int &v, string m){ v = stoi(m); }
 
@@ -59,7 +59,7 @@ void Matches(string str, string str_re, T &v)
     }
 }
 
-vector<string> ReadWord(ifstream &ifs, string targetWord)
+vector<string> readWord(ifstream &ifs, string targetWord)
 {
     string str;
     vector<string> v;
@@ -75,7 +75,7 @@ vector<string> ReadWord(ifstream &ifs, string targetWord)
     return v;
 }
 
-vector<string> ReadWord(ifstream &ifs)
+vector<string> readWord(ifstream &ifs)
 {
     string str;
     string str_re="[A-Za-z0-9\\(\\)]+";
@@ -89,7 +89,7 @@ vector<string> ReadWord(ifstream &ifs)
     return v;
 }
 
-int ReadBracket(ifstream &ifs)
+int readBracket(ifstream &ifs)
 {
     string str;
     regex bracket_re("[\\(\\){}\\s]+");
@@ -103,23 +103,23 @@ int ReadBracket(ifstream &ifs)
     return -1;
 }
 
-void ReadElement(ifstream &ifs, vector<vector<double>> &x, int size, string filename)
+void readElement(ifstream &ifs, matrix &x, int size, string filename)
 {
     string str;
     string str_re="[0-9.]+";
-    x = vector<vector<double>>(size);
+    x = matrix(size);
     for(int i=0; i<size; i++){
         getline(ifs, str);
         Matches(str, str_re, x[i]);  
     }
 }
 
-void ReadElement(ifstream &ifs, vector<vector<int>> &x, int size, string filename)
+void readElement(ifstream &ifs, imatrix &x, int size, string filename)
 {
 
     string str;
     string str_re="[0-9]+";
-    x = vector<vector<int>>(size);
+    x = imatrix(size);
     for(int i=0; i<size; i++){
         getline(ifs, str);
         Matches(str, str_re, x[i]);  
@@ -127,11 +127,11 @@ void ReadElement(ifstream &ifs, vector<vector<int>> &x, int size, string filenam
 
 }
 
-void ReadElement(ifstream &ifs, vector<int> &x, int size, string filename)
+void readElement(ifstream &ifs, isource &x, int size, string filename)
 {
     string str;
     string str_re="[0-9.]+";
-    x = vector<int>(size);
+    x = isource(size);
     for(int i=0; i<size; i++){
         getline(ifs, str);
         Matches(str, str_re, x[i]);  

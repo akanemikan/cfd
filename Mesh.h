@@ -9,26 +9,31 @@ public:
     Mesh(){};
     Mesh(int);
 
-    Matrix points;
-    iMatrix faces;
-    iSource owner;
-    iSource neighbour;
+    matrix points;
+    imatrix faces;
+    isource owner;
+    isource neighbour;
 
     vector<Boundary> boundarys;
      
-    iMatrix boundaryFaces;
-    iSource internalFaces;
+    imatrix boundaryFaces;
+    isource internalFaces;
 
-    Matrix faceCenters;
-    Matrix faceAreas;
+    matrix faceCenters;
+    matrix cellCenters;
+    matrix faceAreas;
+    source cellVolumes;
 
-    void typeSelect(Boundary &boundary, const sSource &v);
-    void ReadBoundaryFile();
+    int nCell;
+
+    void typeSelect(Boundary &boundary, const ssource &v);
+    void readBoundaryFile();
 
     void makeInterBoundFaces();
 
-    void calcFaceCenter();
+    void calcFaceCenters();
     void calcFaceAreas();
+    void calcCellCentersVolumes();
 };
 
 #endif
