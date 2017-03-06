@@ -10,6 +10,8 @@ public:
     source vals;
     matrix boundVals;
     void readValFileAndSet();
+    source calcPtAvr(ofstream &ofs);
+    void writeResult();
 };
 
 #endif

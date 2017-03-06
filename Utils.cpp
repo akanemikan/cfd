@@ -12,6 +12,12 @@ source& operator/=(source &self, double d){
   return self;
 }
 
+source& operator/=(source &self, isource &other){
+  forEach(self, i)
+    self[i] /= other[i];
+  return self;
+}
+
 source operator^(const source &a, const source &b){
     source v(3);
     v[0] = a[1]*b[2] - a[2]*b[1];

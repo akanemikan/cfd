@@ -12,11 +12,11 @@ int main() {
 
     fvm += partDiff::laplacian(1.0e+3, T);
 
-    fvm.showMat();
+    fvm.showMatrix();
 
     Solver::CGSolver(fvm.lhMatrix, fvm.rhSource, T.vals, T.mesh.nCells);
 
-    showSource(T.vals);
+    T.writeResult();
 
     return 0;
 }

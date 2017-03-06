@@ -23,6 +23,8 @@ source& operator+=(source &self, const source &other);
 
 source& operator/=(source &self, double);
 
+source& operator/=(source &self, isource &other);
+
 source operator+(const source &a, const source &b);
 
 source operator-(const source &a, const source &b);

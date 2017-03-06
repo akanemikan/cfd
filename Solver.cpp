@@ -3,7 +3,7 @@
 void Solver::CGSolver(const matrix &A, const source &b, source &x, int n)
 {
     source r(n), p(n), y(n);
-    x.assign(n, 0.0);
+    //x.assign(n, 0.0);
 
     for(int i=0; i<n; ++i){
         double ax = 0.0;

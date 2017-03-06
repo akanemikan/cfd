@@ -2,24 +2,24 @@
 
 fvMatrix partDiff::laplacian(double diffCoeff, scalarField &scf)
 {
-    int sMat = scf.mesh.nCells;
-    fvMatrix fvm(sMat);
+    int matSize = scf.mesh.nCells;
+    fvMatrix fvm(matSize);
     double d;
     source s = scf.mesh.calcS();
 
-    forEach(scf.mesh.internalFaces, iFacei){
-        int facei = scf.mesh.internalFaces[iFacei];
-        int owner = scf.mesh.owner[facei];
-        int neighbour = scf.mesh.neighbour[facei];
+    forEach(scf.mesh.internalFaces, iFaceId){
+        int facei = scf.mesh.internalFaces[iFaceId];
+        int own = scf.mesh.owner[facei];
+        int nei = scf.mesh.neighbour[facei];
         d = calcDistance(
-                         scf.mesh.cellCenters[owner],
-                         scf.mesh.cellCenters[neighbour] 
+                         scf.mesh.cellCenters[own],
+                         scf.mesh.cellCenters[nei] 
                         );
 
-        fvm.lhMatrix[owner][owner] += s[facei]*diffCoeff/d;
-        fvm.lhMatrix[owner][neighbour] += -s[facei]*diffCoeff/d;
-        fvm.lhMatrix[neighbour][owner] += -s[facei]*diffCoeff/d;
-        fvm.lhMatrix[neighbour][neighbour] += s[facei]*diffCoeff/d;
+        fvm.lhMatrix[own][own] +=  s[facei]*diffCoeff/d;
+        fvm.lhMatrix[own][nei] += -s[facei]*diffCoeff/d;
+        fvm.lhMatrix[nei][own] += -s[facei]*diffCoeff/d;
+        fvm.lhMatrix[nei][nei] +=  s[facei]*diffCoeff/d;
 
     }
 
